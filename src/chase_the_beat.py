@@ -35,9 +35,9 @@ class Chase(Elaboratable):
 
 if __name__ == '__main__':
     from amaranth.cli import main
-    from amaranth.sim import Simulator
-    top = Chase()
-    main(top, ports=[top.tap, top.o])
+    # from amaranth.sim import Simulator
+    chase = Chase()
+    main(chase, ports=[chase.tap, chase.o])
     # if False:
     # m = Module()
     # top_rst = Signal()
