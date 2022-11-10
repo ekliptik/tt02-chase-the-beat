@@ -1,6 +1,7 @@
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import RisingEdge, FallingEdge, Timer, ClockCycles
+from cocotb.triggers import ClockCycles
+
 
 @cocotb.test()
 async def test_chase(dut):
@@ -27,6 +28,7 @@ async def test_chase(dut):
     await ClockCycles(dut.clk, 10)
     assert int(dut.o.value) == 2
 
+
 @cocotb.test()
 async def test_noise(dut):
     dut._log.info("start")
@@ -45,4 +47,3 @@ async def test_noise(dut):
         await ClockCycles(dut.clk, 1)
     # Check LFSR balance property for max run
     assert counts[0] + 1 == counts[1]
-
