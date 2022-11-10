@@ -246,4 +246,11 @@ module top(o, clk, rst, tap);
     endcase
   end
   assign \$29  = \$30 ;
+`ifdef COCOTB_SIM
+initial begin
+  $dumpfile ("chase_cocotb.vcd");
+  $dumpvars (0, top);
+  #1;
+end
+`endif
 endmodule
