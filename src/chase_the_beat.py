@@ -33,11 +33,44 @@ class Chase(Elaboratable):
         m.d.sync += prev_tap.eq(self.tap)
         return m
 
+class Noise(Elaboratable):
+    def __init__(self):
+        self.o = Signal()
+
+    def elaborate(self, _):
+        m = Module()
+        # Max length external feedback LFSR with n = 7, P(x) = x**n + x + 1
+        length = 7
+        shift_reg = Signal(length, reset=1)
+        m.d.sync += self.o.eq(shift_reg[-1])
+        m.d.sync += shift_reg[0].eq(shift_reg[-1] ^ shift_reg[1])
+        for i in range(1, length):
+            m.d.sync += shift_reg[i].eq(shift_reg[i-1])
+        return m
+
+
+
+class AmaranthTop(Elaboratable):
+    def __init__(self):
+        self.tap = Signal()
+        self.o = Signal(unsigned(8))
+        self.mode = Signal()
+
+    def elaborate(self, _):
+        m = Module()
+        chase = m.submodules.chase = Chase()
+        noise = m.submodules.noise = Noise()
+        m.d.comb += [
+            chase.tap.eq(self.tap),
+            self.o.eq(Mux(self.mode, chase.o, Cat(noise.o, Const(0, 7))))
+        ]
+        return m
+
 if __name__ == '__main__':
     from amaranth.cli import main
     # from amaranth.sim import Simulator
-    chase = Chase()
-    main(chase, ports=[chase.tap, chase.o])
+    a_top = AmaranthTop()
+    main(a_top, ports=[a_top.tap, a_top.mode, a_top.o])
     # if False:
     # m = Module()
     # top_rst = Signal()
