@@ -254,19 +254,7 @@ module noise(rst, clk, o);
   (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *)
   wire \$1 ;
   (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *)
-  wire \$10 ;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *)
-  wire \$12 ;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *)
-  wire \$14 ;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *)
-  wire \$16 ;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *)
-  wire \$18 ;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *)
-  wire \$20 ;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *)
-  wire \$22 ;
+  wire \$4 ;
   (* src = "/home/emil/pulls/amaranth/amaranth/hdl/ir.py:527" *)
   input clk;
   wire clk;
@@ -277,61 +265,19 @@ module noise(rst, clk, o);
   input rst;
   wire rst;
   (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] shift_reg = 7'h0c;
+  reg [14:0] shift_reg = 15'h000c;
   (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] \shift_reg$3  = 7'h3c;
+  reg [14:0] \shift_reg$3  = 15'h003c;
   (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] \shift_reg$3$next ;
+  reg [14:0] \shift_reg$3$next ;
   (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] \shift_reg$4  = 7'h02;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] \shift_reg$4$next ;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] \shift_reg$5  = 7'h1a;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] \shift_reg$5$next ;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] \shift_reg$6  = 7'h76;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] \shift_reg$6$next ;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] \shift_reg$7  = 7'h0f;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] \shift_reg$7$next ;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] \shift_reg$8  = 7'h0d;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] \shift_reg$8$next ;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] \shift_reg$9  = 7'h52;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] \shift_reg$9$next ;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:44" *)
-  reg [6:0] \shift_reg$next ;
-  assign \$10  = \shift_reg$3 [6] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *) \shift_reg$3 [0];
-  assign \$12  = \shift_reg$4 [6] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *) \shift_reg$4 [0];
-  assign \$14  = \shift_reg$5 [6] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *) \shift_reg$5 [0];
-  assign \$16  = \shift_reg$6 [6] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *) \shift_reg$6 [0];
-  assign \$18  = \shift_reg$7 [6] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *) \shift_reg$7 [0];
-  assign \$1  = shift_reg[6] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *) shift_reg[0];
-  assign \$20  = \shift_reg$8 [6] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *) \shift_reg$8 [0];
-  assign \$22  = \shift_reg$9 [6] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *) \shift_reg$9 [0];
+  reg [14:0] \shift_reg$next ;
+  assign \$1  = shift_reg[14] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *) shift_reg[0];
+  assign \$4  = \shift_reg$3 [14] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:45" *) \shift_reg$3 [0];
   always @(posedge clk)
     shift_reg <= \shift_reg$next ;
   always @(posedge clk)
     \shift_reg$3  <= \shift_reg$3$next ;
-  always @(posedge clk)
-    \shift_reg$4  <= \shift_reg$4$next ;
-  always @(posedge clk)
-    \shift_reg$5  <= \shift_reg$5$next ;
-  always @(posedge clk)
-    \shift_reg$6  <= \shift_reg$6$next ;
-  always @(posedge clk)
-    \shift_reg$7  <= \shift_reg$7$next ;
-  always @(posedge clk)
-    \shift_reg$8  <= \shift_reg$8$next ;
-  always @(posedge clk)
-    \shift_reg$9  <= \shift_reg$9$next ;
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$2 ) begin end
     \shift_reg$next [0] = \$1 ;
@@ -341,125 +287,46 @@ module noise(rst, clk, o);
     \shift_reg$next [4] = shift_reg[3];
     \shift_reg$next [5] = shift_reg[4];
     \shift_reg$next [6] = shift_reg[5];
+    \shift_reg$next [7] = shift_reg[6];
+    \shift_reg$next [8] = shift_reg[7];
+    \shift_reg$next [9] = shift_reg[8];
+    \shift_reg$next [10] = shift_reg[9];
+    \shift_reg$next [11] = shift_reg[10];
+    \shift_reg$next [12] = shift_reg[11];
+    \shift_reg$next [13] = shift_reg[12];
+    \shift_reg$next [14] = shift_reg[13];
     (* src = "/home/emil/pulls/amaranth/amaranth/hdl/xfrm.py:519" *)
     casez (rst)
       1'h1:
-          \shift_reg$next  = 7'h0c;
+          \shift_reg$next  = 15'h000c;
     endcase
   end
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$2 ) begin end
-    \shift_reg$3$next [0] = \$10 ;
+    \shift_reg$3$next [0] = \$4 ;
     \shift_reg$3$next [1] = \shift_reg$3 [0];
     \shift_reg$3$next [2] = \shift_reg$3 [1];
     \shift_reg$3$next [3] = \shift_reg$3 [2];
     \shift_reg$3$next [4] = \shift_reg$3 [3];
     \shift_reg$3$next [5] = \shift_reg$3 [4];
     \shift_reg$3$next [6] = \shift_reg$3 [5];
+    \shift_reg$3$next [7] = \shift_reg$3 [6];
+    \shift_reg$3$next [8] = \shift_reg$3 [7];
+    \shift_reg$3$next [9] = \shift_reg$3 [8];
+    \shift_reg$3$next [10] = \shift_reg$3 [9];
+    \shift_reg$3$next [11] = \shift_reg$3 [10];
+    \shift_reg$3$next [12] = \shift_reg$3 [11];
+    \shift_reg$3$next [13] = \shift_reg$3 [12];
+    \shift_reg$3$next [14] = \shift_reg$3 [13];
     (* src = "/home/emil/pulls/amaranth/amaranth/hdl/xfrm.py:519" *)
     casez (rst)
       1'h1:
-          \shift_reg$3$next  = 7'h3c;
+          \shift_reg$3$next  = 15'h003c;
     endcase
   end
-  always @* begin
-    if (\$auto$verilog_backend.cc:2083:dump_module$2 ) begin end
-    \shift_reg$4$next [0] = \$12 ;
-    \shift_reg$4$next [1] = \shift_reg$4 [0];
-    \shift_reg$4$next [2] = \shift_reg$4 [1];
-    \shift_reg$4$next [3] = \shift_reg$4 [2];
-    \shift_reg$4$next [4] = \shift_reg$4 [3];
-    \shift_reg$4$next [5] = \shift_reg$4 [4];
-    \shift_reg$4$next [6] = \shift_reg$4 [5];
-    (* src = "/home/emil/pulls/amaranth/amaranth/hdl/xfrm.py:519" *)
-    casez (rst)
-      1'h1:
-          \shift_reg$4$next  = 7'h02;
-    endcase
-  end
-  always @* begin
-    if (\$auto$verilog_backend.cc:2083:dump_module$2 ) begin end
-    \shift_reg$5$next [0] = \$14 ;
-    \shift_reg$5$next [1] = \shift_reg$5 [0];
-    \shift_reg$5$next [2] = \shift_reg$5 [1];
-    \shift_reg$5$next [3] = \shift_reg$5 [2];
-    \shift_reg$5$next [4] = \shift_reg$5 [3];
-    \shift_reg$5$next [5] = \shift_reg$5 [4];
-    \shift_reg$5$next [6] = \shift_reg$5 [5];
-    (* src = "/home/emil/pulls/amaranth/amaranth/hdl/xfrm.py:519" *)
-    casez (rst)
-      1'h1:
-          \shift_reg$5$next  = 7'h1a;
-    endcase
-  end
-  always @* begin
-    if (\$auto$verilog_backend.cc:2083:dump_module$2 ) begin end
-    \shift_reg$6$next [0] = \$16 ;
-    \shift_reg$6$next [1] = \shift_reg$6 [0];
-    \shift_reg$6$next [2] = \shift_reg$6 [1];
-    \shift_reg$6$next [3] = \shift_reg$6 [2];
-    \shift_reg$6$next [4] = \shift_reg$6 [3];
-    \shift_reg$6$next [5] = \shift_reg$6 [4];
-    \shift_reg$6$next [6] = \shift_reg$6 [5];
-    (* src = "/home/emil/pulls/amaranth/amaranth/hdl/xfrm.py:519" *)
-    casez (rst)
-      1'h1:
-          \shift_reg$6$next  = 7'h76;
-    endcase
-  end
-  always @* begin
-    if (\$auto$verilog_backend.cc:2083:dump_module$2 ) begin end
-    \shift_reg$7$next [0] = \$18 ;
-    \shift_reg$7$next [1] = \shift_reg$7 [0];
-    \shift_reg$7$next [2] = \shift_reg$7 [1];
-    \shift_reg$7$next [3] = \shift_reg$7 [2];
-    \shift_reg$7$next [4] = \shift_reg$7 [3];
-    \shift_reg$7$next [5] = \shift_reg$7 [4];
-    \shift_reg$7$next [6] = \shift_reg$7 [5];
-    (* src = "/home/emil/pulls/amaranth/amaranth/hdl/xfrm.py:519" *)
-    casez (rst)
-      1'h1:
-          \shift_reg$7$next  = 7'h0f;
-    endcase
-  end
-  always @* begin
-    if (\$auto$verilog_backend.cc:2083:dump_module$2 ) begin end
-    \shift_reg$8$next [0] = \$20 ;
-    \shift_reg$8$next [1] = \shift_reg$8 [0];
-    \shift_reg$8$next [2] = \shift_reg$8 [1];
-    \shift_reg$8$next [3] = \shift_reg$8 [2];
-    \shift_reg$8$next [4] = \shift_reg$8 [3];
-    \shift_reg$8$next [5] = \shift_reg$8 [4];
-    \shift_reg$8$next [6] = \shift_reg$8 [5];
-    (* src = "/home/emil/pulls/amaranth/amaranth/hdl/xfrm.py:519" *)
-    casez (rst)
-      1'h1:
-          \shift_reg$8$next  = 7'h0d;
-    endcase
-  end
-  always @* begin
-    if (\$auto$verilog_backend.cc:2083:dump_module$2 ) begin end
-    \shift_reg$9$next [0] = \$22 ;
-    \shift_reg$9$next [1] = \shift_reg$9 [0];
-    \shift_reg$9$next [2] = \shift_reg$9 [1];
-    \shift_reg$9$next [3] = \shift_reg$9 [2];
-    \shift_reg$9$next [4] = \shift_reg$9 [3];
-    \shift_reg$9$next [5] = \shift_reg$9 [4];
-    \shift_reg$9$next [6] = \shift_reg$9 [5];
-    (* src = "/home/emil/pulls/amaranth/amaranth/hdl/xfrm.py:519" *)
-    casez (rst)
-      1'h1:
-          \shift_reg$9$next  = 7'h52;
-    endcase
-  end
-  assign o[7] = \shift_reg$9 [6];
-  assign o[6] = \shift_reg$8 [6];
-  assign o[5] = \shift_reg$7 [6];
-  assign o[4] = \shift_reg$6 [6];
-  assign o[3] = \shift_reg$5 [6];
-  assign o[2] = \shift_reg$4 [6];
-  assign o[1] = \shift_reg$3 [6];
-  assign o[0] = shift_reg[6];
+  assign o[1] = \shift_reg$3 [14];
+  assign o[0] = shift_reg[14];
+  assign o[7:2] = 6'h00;
 endmodule
 
 (* \amaranth.hierarchy  = "top" *)

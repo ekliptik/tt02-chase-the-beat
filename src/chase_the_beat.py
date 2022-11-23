@@ -40,7 +40,7 @@ class Noise(Elaboratable):
         lfsr_inits = [12, 60, 2, 26, 118, 15, 13, 82]
         for lfsr_idx in range(8):
             # Max length external feedback LFSR with n = 7, P(x) = x**n + x + 1
-            length = 7
+            length = 22
             shift_reg = Signal(length, reset=lfsr_inits[lfsr_idx])
             m.d.sync += shift_reg[0].eq(shift_reg[-1] ^ shift_reg[0])
             for i in range(1, length):
@@ -73,13 +73,13 @@ if len(sys.argv) == 2 and sys.argv[1] == "wav":
     wavf = wave.open('sound.wav','w')
     wavf.setnchannels(1)
     wavf.setsampwidth(1)
-    wavf.setframerate(10000)
+    wavf.setframerate(5000)
     def process():
         yield a_top.mode.eq(0)
         yield
-        for _ in range(6400):
-            out = yield a_top.o[0]
-            wavf.writeframesraw(bytes([255*out]))
+        for _ in range(10000):
+            out = yield a_top.o
+            wavf.writeframesraw(bytes([out]))
             yield
     sim.add_sync_process(process)
     sim.add_clock(1e-3)
