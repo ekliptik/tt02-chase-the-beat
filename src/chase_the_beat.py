@@ -1,5 +1,5 @@
+import sys
 from amaranth import *
-
 
 class Chase(Elaboratable):
     def __init__(self):
@@ -31,20 +31,21 @@ class Chase(Elaboratable):
         m.d.sync += prev_tap.eq(self.tap)
         return m
 
-
 class Noise(Elaboratable):
     def __init__(self):
-        self.o = Signal()
+        self.o = Signal(unsigned(8))
 
     def elaborate(self, _):
         m = Module()
-        # Max length external feedback LFSR with n = 7, P(x) = x**n + x + 1
-        length = 7
-        shift_reg = Signal(length, reset=1)
-        m.d.sync += self.o.eq(shift_reg[-1])
-        m.d.sync += shift_reg[0].eq(shift_reg[-1] ^ shift_reg[1])
-        for i in range(1, length):
-            m.d.sync += shift_reg[i].eq(shift_reg[i-1])
+        lfsr_inits = [12, 60, 2, 26, 118, 15, 13, 82]
+        for lfsr_idx in range(8):
+            # Max length external feedback LFSR with n = 7, P(x) = x**n + x + 1
+            length = 7
+            shift_reg = Signal(length, reset=lfsr_inits[lfsr_idx])
+            m.d.sync += shift_reg[0].eq(shift_reg[-1] ^ shift_reg[0])
+            for i in range(1, length):
+                m.d.sync += shift_reg[i].eq(shift_reg[i-1])
+            m.d.comb += self.o[lfsr_idx].eq(shift_reg[-1])
         return m
 
 
@@ -60,12 +61,31 @@ class AmaranthTop(Elaboratable):
         noise = m.submodules.noise = Noise()
         m.d.comb += [
             chase.tap.eq(self.tap),
-            self.o.eq(Mux(self.mode, chase.o, Cat(noise.o, Const(0, 7))))
+            self.o.eq(Mux(self.mode, chase.o, noise.o))
         ]
         return m
 
-
-if __name__ == '__main__':
+if len(sys.argv) == 2 and sys.argv[1] == "wav":
+    from amaranth.sim import Simulator
+    import wave
+    a_top = AmaranthTop()
+    sim = Simulator(a_top)
+    wavf = wave.open('sound.wav','w')
+    wavf.setnchannels(1)
+    wavf.setsampwidth(1)
+    wavf.setframerate(10000)
+    def process():
+        yield a_top.mode.eq(0)
+        yield
+        for _ in range(6400):
+            out = yield a_top.o[0]
+            wavf.writeframesraw(bytes([255*out]))
+            yield
+    sim.add_sync_process(process)
+    sim.add_clock(1e-3)
+    with sim.write_vcd(f"chase.vcd", f"chase.gtkw", traces=[a_top.o]):
+        sim.run()
+else:
     from amaranth.cli import main
     a_top = AmaranthTop()
     main(a_top, ports=[a_top.tap, a_top.mode, a_top.o])

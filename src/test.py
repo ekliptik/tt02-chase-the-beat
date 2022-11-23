@@ -41,9 +41,12 @@ async def test_noise(dut):
     await ClockCycles(dut.clk, 1)
     dut.rst.value = 0
     await ClockCycles(dut.clk, 1)
-    counts = [0, 0]
-    for _ in range(63):
-        counts[dut.o[0].value] += 1
+    counts = [[0, 0] for _ in range(8)]
+    for _ in range(127):
+        for i in range(8):
+            counts[i][dut.o[i].value] += 1
         await ClockCycles(dut.clk, 1)
     # Check LFSR balance property for max run
-    assert counts[0] + 1 == counts[1]
+    print(counts)
+    for i in range(8):
+        assert counts[i][0] + 1 == counts[i][1]
