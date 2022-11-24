@@ -254,17 +254,15 @@ module noise(rst, clk, o);
   (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:47" *)
   wire \$1 ;
   (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:47" *)
-  wire \$10 ;
+  wire \$5 ;
   (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:47" *)
-  wire \$6 ;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:47" *)
-  wire \$8 ;
+  wire \$7 ;
   (* src = "/home/emil/pulls/amaranth/amaranth/hdl/ir.py:527" *)
   input clk;
   wire clk;
   (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:37" *)
-  output [3:0] o;
-  wire [3:0] o;
+  output [2:0] o;
+  wire [2:0] o;
   (* src = "/home/emil/pulls/amaranth/amaranth/hdl/ir.py:527" *)
   input rst;
   wire rst;
@@ -279,23 +277,16 @@ module noise(rst, clk, o);
   (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:46" *)
   reg [14:0] \shift_reg$4$next ;
   (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:46" *)
-  reg [14:0] \shift_reg$5  = 15'h5981;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:46" *)
-  reg [14:0] \shift_reg$5$next ;
-  (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:46" *)
   reg [14:0] \shift_reg$next ;
-  assign \$10  = \shift_reg$5 [14] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:47" *) \shift_reg$5 [0];
-  always @(posedge clk)
-    shift_reg <= \shift_reg$next ;
   always @(posedge clk)
     \shift_reg$3  <= \shift_reg$3$next ;
   always @(posedge clk)
     \shift_reg$4  <= \shift_reg$4$next ;
-  always @(posedge clk)
-    \shift_reg$5  <= \shift_reg$5$next ;
   assign \$1  = shift_reg[14] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:47" *) shift_reg[0];
-  assign \$6  = \shift_reg$3 [14] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:47" *) \shift_reg$3 [0];
-  assign \$8  = \shift_reg$4 [14] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:47" *) \shift_reg$4 [0];
+  assign \$5  = \shift_reg$3 [14] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:47" *) \shift_reg$3 [0];
+  assign \$7  = \shift_reg$4 [14] ^ (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:47" *) \shift_reg$4 [0];
+  always @(posedge clk)
+    shift_reg <= \shift_reg$next ;
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$2 ) begin end
     \shift_reg$next [0] = \$1 ;
@@ -321,7 +312,7 @@ module noise(rst, clk, o);
   end
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$2 ) begin end
-    \shift_reg$3$next [0] = \$6 ;
+    \shift_reg$3$next [0] = \$5 ;
     \shift_reg$3$next [1] = \shift_reg$3 [0];
     \shift_reg$3$next [2] = \shift_reg$3 [1];
     \shift_reg$3$next [3] = \shift_reg$3 [2];
@@ -344,7 +335,7 @@ module noise(rst, clk, o);
   end
   always @* begin
     if (\$auto$verilog_backend.cc:2083:dump_module$2 ) begin end
-    \shift_reg$4$next [0] = \$8 ;
+    \shift_reg$4$next [0] = \$7 ;
     \shift_reg$4$next [1] = \shift_reg$4 [0];
     \shift_reg$4$next [2] = \shift_reg$4 [1];
     \shift_reg$4$next [3] = \shift_reg$4 [2];
@@ -365,30 +356,6 @@ module noise(rst, clk, o);
           \shift_reg$4$next  = 15'h4234;
     endcase
   end
-  always @* begin
-    if (\$auto$verilog_backend.cc:2083:dump_module$2 ) begin end
-    \shift_reg$5$next [0] = \$10 ;
-    \shift_reg$5$next [1] = \shift_reg$5 [0];
-    \shift_reg$5$next [2] = \shift_reg$5 [1];
-    \shift_reg$5$next [3] = \shift_reg$5 [2];
-    \shift_reg$5$next [4] = \shift_reg$5 [3];
-    \shift_reg$5$next [5] = \shift_reg$5 [4];
-    \shift_reg$5$next [6] = \shift_reg$5 [5];
-    \shift_reg$5$next [7] = \shift_reg$5 [6];
-    \shift_reg$5$next [8] = \shift_reg$5 [7];
-    \shift_reg$5$next [9] = \shift_reg$5 [8];
-    \shift_reg$5$next [10] = \shift_reg$5 [9];
-    \shift_reg$5$next [11] = \shift_reg$5 [10];
-    \shift_reg$5$next [12] = \shift_reg$5 [11];
-    \shift_reg$5$next [13] = \shift_reg$5 [12];
-    \shift_reg$5$next [14] = \shift_reg$5 [13];
-    (* src = "/home/emil/pulls/amaranth/amaranth/hdl/xfrm.py:519" *)
-    casez (rst)
-      1'h1:
-          \shift_reg$5$next  = 15'h5981;
-    endcase
-  end
-  assign o[3] = \shift_reg$5 [14];
   assign o[2] = \shift_reg$4 [14];
   assign o[1] = \shift_reg$3 [14];
   assign o[0] = shift_reg[14];
@@ -413,7 +380,7 @@ module top(mode, o, clk, rst, tap);
   input mode;
   wire mode;
   (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:37" *)
-  wire [3:0] noise_o;
+  wire [2:0] noise_o;
   (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:57" *)
   output [7:0] o;
   wire [7:0] o;
@@ -423,7 +390,7 @@ module top(mode, o, clk, rst, tap);
   (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:56" *)
   input tap;
   wire tap;
-  assign \$1  = + (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:68" *) { 3'h4, noise_o };
+  assign \$1  = + (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:68" *) { 3'h5, noise_o };
   assign \$3  = mode ? (* src = "/home/emil/pulls/tt02-verilog-demo/src/chase_the_beat.py:68" *) chase_o : \$1 ;
   chase chase (
     .clk(clk),

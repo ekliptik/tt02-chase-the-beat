@@ -60,7 +60,7 @@ class AmaranthTop(Elaboratable):
     def elaborate(self, _):
         m = Module()
         # We can only afford a couple LFSRs
-        noise_width = 4
+        noise_width = 3
         chase = m.submodules.chase = Chase()
         noise = m.submodules.noise = Noise(noise_width)
         m.d.comb += [
@@ -77,12 +77,12 @@ if len(sys.argv) == 2 and sys.argv[1] == "wav":
     wavf = wave.open('sound.wav','w')
     wavf.setnchannels(1)
     wavf.setsampwidth(1)
-    factor = 10
+    factor = 16
     wavf.setframerate(factor*5000)
     def process():
         yield a_top.mode.eq(0)
         yield
-        for _ in range(40000):
+        for _ in range(int(100000/factor)):
             out = yield a_top.o
             wavf.writeframesraw(bytes([out]*factor))
             yield
