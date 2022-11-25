@@ -59,13 +59,12 @@ class AmaranthTop(Elaboratable):
 
     def elaborate(self, _):
         m = Module()
-        # We can only afford a couple LFSRs
-        noise_width = 3
+        noise_width = 8
         chase = m.submodules.chase = Chase()
         noise = m.submodules.noise = Noise(noise_width)
         m.d.comb += [
             chase.tap.eq(self.tap),
-            self.o.eq(Mux(self.mode, chase.o, Cat(noise.o, Const(8-noise_width))))
+            self.o.eq(Mux(self.mode, chase.o, Cat(noise.o, Const(0, shape=8-noise_width))))
         ]
         return m
 
