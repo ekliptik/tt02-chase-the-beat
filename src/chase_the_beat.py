@@ -59,13 +59,14 @@ class AmaranthTop(Elaboratable):
 
     def elaborate(self, _):
         m = Module()
-        noise_width = 8
-        chase = m.submodules.chase = Chase()
-        noise = m.submodules.noise = Noise(noise_width)
-        m.d.comb += [
-            chase.tap.eq(self.tap),
-            self.o.eq(Mux(self.mode, chase.o, Cat(noise.o, Const(0, shape=8-noise_width))))
-        ]
+        # noise_width = 8
+        # chase = m.submodules.chase = Chase()
+        # noise = m.submodules.noise = Noise(noise_width)
+        # m.d.comb += [
+        #     chase.tap.eq(self.tap),
+        #     self.o.eq(Mux(self.mode, chase.o, Cat(noise.o, Const(0, shape=8-noise_width))))
+        # ]
+        m.d.sync += self.o.eq(~self.o)
         return m
 
 if len(sys.argv) == 2 and sys.argv[1] == "wav":
